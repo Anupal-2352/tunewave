@@ -7,15 +7,13 @@ import { PlayerContext } from "./context/PlayerContext"
 const App = () => {
   const {audioRef,track} = useContext(PlayerContext)
   return (
-    <div className="h-screen bg-black">
-      <div className="h-[90%] flex">
+    <div className="h-screen flex flex-col">
+      <div className="flex-grow flex bg-gray-900 overflow-hidden">
         <Sidebar/>
         <Display/>
       </div>
       <Player/>
-      <audio ref={audioRef} src={track.file} preload="auto">
-
-      </audio>
+      <audio ref={audioRef} src={track.file} preload="auto" />
     </div>
   )
 }
