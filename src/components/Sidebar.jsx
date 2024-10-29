@@ -1,34 +1,38 @@
-import { useNavigate } from "react-router-dom";
-import { assets } from "../assets/assets";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Home, Library } from "lucide-react";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
-    <div className="w-64 h-full bg-gray-900 text-white flex flex-col border-r-2 border-white/80">
+    <div className="w-48 h-full bg-gray-900 text-white hidden flex-col border-r-2 border-white/80 md:flex">
       <div className="p-4">
         <h1 className="text-2xl font-bold mb-8">TuneWave</h1>
         <nav>
-          <ul className="space-y-4">
-            <li>
-              <button onClick={() => navigate('/')} className="flex items-center gap-3 hover:text-blue-400">
-                <img className="w-5" src={assets.home_icon} alt="" />
+          <div className="flex flex-col gap-y-6">
+            <Link to={'/'}>
+              <button
+                onClick={() => navigate('/')}
+                className={`flex items-center gap-3 ${
+                  location.pathname === '/' ? 'text-blue-400' : 'hover:text-blue-400'
+                }`}
+              >
+                <Home className="w-5 h-5" />
                 <span>Home</span>
               </button>
-            </li>
-            <li>
-              <button className="flex items-center gap-3 hover:text-blue-400">
-                <img className="w-5" src={assets.search_icon} alt="" />
-                <span>Search</span>
-              </button>
-            </li>
-            <li>
-              <button className="flex items-center gap-3 hover:text-blue-400">
-                <img className="w-5" src={assets.stack_icon} alt="" />
+            </Link>
+            <Link to={'/library'}>
+              <button
+                className={`flex items-center gap-3 ${
+                  location.pathname === '/library' ? 'text-blue-400' : 'hover:text-blue-400'
+                }`}
+              >
+                <Library className="w-5 h-5" />
                 <span>Your Library</span>
               </button>
-            </li>
-          </ul>
+            </Link>
+          </div>
         </nav>
       </div>
       <div className="mt-auto p-4">

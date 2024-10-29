@@ -36,14 +36,14 @@ const SongRow = ({ item, index, albumName, onPlay }) => (
   </div>
 );
 
-const DisplayAlbum = () => {
+const DisplayAlbum = ({ onSearch }) => {
   const { id } = useParams();
   const albumData = albumsData[id];
   const { playWithId } = useContext(PlayerContext);
 
   return (
-    <div className="min-h-full">
-      <Navbar />
+    <div className="min-h-full p-4">
+      {/* <Navbar onSearch={onSearch} /> */}
       
       {/* Album Header */}
       <div className="relative mt-6 px-6">
@@ -68,9 +68,8 @@ const DisplayAlbum = () => {
             </h2>
             <h4 className="text-lg text-gray-300">{albumData.desc}</h4>
             <div className="flex items-center gap-4 mt-2 text-sm">
-              <img className="w-6 h-6" src={assets.spotify_logo} alt="Spotify" />
-              <span className="font-semibold">Spotify</span>
-              <span className="font-semibold">1,232,123 saves</span>
+              <span className="font-semibold text-slate-200">TuneWave</span>
+              <span className="font-semibold text-slate-200">1,232,123 saves</span>
               <span className="text-gray-400">50 songs, about 2hr 30min</span>
             </div>
           </div>
